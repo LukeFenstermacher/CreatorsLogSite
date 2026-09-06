@@ -1,0 +1,541 @@
+/* GLOBAL */
+
+@font-face {
+    font-family: "Bank Gothic Light BT";
+    src: url("Assets/Fonts/bank_gothic_lt_bt.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+    background-color: #1C2826;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    color: #F6F8FF;
+    height: 100%;
+}
+@media (max-width: 900px) {
+    .project-entry {
+        grid-template-columns: 1fr;
+    }
+    .project-summary {
+        grid-template-columns: 1fr;
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 0px;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+/* HERO HEADER */
+.hero-header {
+    position: relative;
+    height: 10rem;
+    background: url("Assets/creators_log_header.jpg") top/cover no-repeat;
+}
+.hero-header img {
+    height: 8rem;
+}
+
+.hero-logo {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-position: center;
+}
+
+.hero-logo img {
+    height: 8rem;
+    align-items: center;
+}
+
+.hero-title {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title h1 {
+    font-size: 3rem;
+    color: #F6F8FF;
+    letter-spacing: 2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;    
+}
+
+.project-card {
+    max-width: 42rem;
+}
+
+.project-card img {
+    height: 24rem;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+
+/* NAV BAR */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    font-size: 1.25rem;
+    background-color: #1C2826;
+    border-bottom: 1px solid #F6F8FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 4rem;
+    z-index: 100;
+}
+
+.nav-logo {
+    position: absolute;
+    left: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-logo img {
+    height: 4rem;
+}
+
+.nav-item {
+    font-family: "Bank Gothic Light BT", sans-serif;
+    font-size: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: #F6F8FF;
+    transition: color 0.25s ease;
+}
+
+.nav-item.active {
+    color: #94C5CC;
+}
+
+.nav-item:not(.active):hover {
+    color: #BD4E26;
+}
+
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-divider {
+    pointer-events: none;
+    user-select: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    cursor: default;
+}
+
+
+/* NAV LINKS */
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-links .active {
+    color: #94C5CC;
+}
+
+/* DROPDOWNS */
+
+.dropdown-menu {
+    display: inline-flex;
+    position: absolute;
+    min-width: 5rem;
+    /*width: 70rem;*/
+    padding: 1rem;
+    font-family: "Bank Gothic Light BT", sans-serif;
+    background: #1C2826;
+    border: 1px solid #F6F8FF;
+    box-shadow: 0 1rem 2rem rgba(1, 1, 1, 1);
+    border-radius: 0.5rem;
+    list-style: none;
+    opacity: 0;
+    
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+    
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.dropdown-menu li {
+    padding: 6px 10px;
+    white-space: nowrap;
+}
+
+.dropdown-item {
+    white-space: nowrap;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    color: #F6F8FF;
+    transition: color 0.25s ease;
+}
+
+.dropdown-item:hover {
+    color: #BD4E26;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* CONTENT */
+
+.content {
+    padding: 2rem;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+#content.fade-out {
+    opacity: 0;
+  }
+
+.fade-out {
+    opacity: 0;
+}
+
+.dash-list {
+    line-height: 1.6;
+    font-size: 1rem;
+    list-style-type: none;
+    padding-left: 1em; 
+}
+
+.dash-list li::before {
+    content: "–  ";
+    color: #F6F8FF;
+}
+
+section.project-entry {
+    display: grid;
+    grid-template-columns: 1fr  1fr;
+    gap: 2rem;
+    /*margin-bottom: 60px;
+    align-items: start;*/
+    height: calc(100vh - 12rem);
+    overflow: hidden;
+}
+
+.project-media {
+    display: block;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    /* padding-top: 56.25%; /* 16:9 */
+    background: #1C2826;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.project-media iframe {
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+iframe.short {
+    height: 100%;
+    aspect-ratio: 9 / 16;
+    width: auto;
+    display: block;
+    margin-inline: auto;
+}
+
+.project-media img {
+    padding: 1rem;
+}
+
+.project-media::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+.project-media::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 1rem;
+}
+
+.project-notes::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+.project-notes::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 197, 204, 0.4);
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.project-notes::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(148, 197, 204, 0.75);
+}
+
+.project-notes::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.project-notes h1 {
+    font-family: "Bank Gothic Light BT", sans-serif;
+    font-size: 1.5rem;
+    color: #F6F8FF;
+    margin-bottom: 1.5rem;
+}
+
+.project-notes p {
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-notes {
+    border-left: 2px soild #F6F8FF;
+    padding-left: 2.5rem;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* Appendices */
+
+section.appendix {
+    display: grid;
+    grid-template-columns: 1fr;
+    /*margin-bottom: 60px;
+    align-items: start;*/
+}
+
+section.appendix h1 {
+    font-family: "Bank Gothic Light BT", sans-serif;
+    font-size: 2.5rem;
+    color: #F6F8FF;
+    padding: 0;
+    margin: 0;
+}
+
+section.appendix p {
+    line-height: 1.6;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+section.appendix::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+section.appendix::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 197, 204, 0.4);
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+section.appendix::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(148, 197, 204, 0.75);
+}
+
+section.appendix::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.project-summary {
+    align-items: left;
+    position: relative;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.project-summary:hover {
+    border: 3px solid #94C5CC;
+    border-radius: 2rem;
+    transition: border 0.3s ease;
+}
+
+.project-summary h2 {
+    font-family: "Bank Gothic Light BT", sans-serif;
+    font-size: 1.75rem;
+    color: #F6F8FF;
+}
+
+.project-summary img {
+    max-height: 10rem;
+    margin: 0 auto;
+}
+
+.project-summary-content {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    padding: 1rem;
+    padding-top: 0;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.project-summary p {
+    line-height: 1.6;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Active image */
+.active-image {
+    opacity: 1;
+    transition: opacity 0.35s ease;
+}
+
+.active-image.fade-out {
+    opacity: 0;
+}
+
+.active-image-container {
+    width: 100%;
+    max-width: 60rem;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    margin: 0 auto 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.active-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Fade state */
+.active-image-container img.fade-out {
+    opacity: 0;
+}
+
+/* Thumbnail Strip */
+.lower-media-strip {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pinned-thumbnail {
+    flex-shrink: 0;
+    height: 4rem;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: #1C2826;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pinned-thumbnail:hover {
+    background: #94C5CC;
+    transform: scale(1.05);
+}
+
+.thumbnail-strip {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding: 0.5rem;
+}
+
+.thumbnail-strip::-webkit-scrollbar {
+    height: 0.25rem;
+}
+
+.thumbnail-strip::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 197, 204, 0.4);
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.thumbnail-strip::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(148, 197, 204, 0.75);
+}
+
+.thumbnail-strip::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Thumbnails */
+.thumbnail {
+    height: 4rem;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.thumbnail:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.thumbnail.active {
+    opacity: 1;
+    outline: 2px solid #94C5CC;
+}
+
+/* Controls */
+.media-controls {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.auto-play {
+    flex-shrink: 0;
+    margin: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 30%;
+    /*border: 1px solid #1C2826;*/
+    color: #F6F8FF;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auto-play:hover {
+    background: #94C5CC;
+    transform: scale(1.05);
+}
